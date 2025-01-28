@@ -50,7 +50,7 @@ ggplot(data, aes(x="",y=prop,fill=vs_F)) +
   geom_bar(stat="identity",width=1) +
   coord_polar("y",start=0) +
   theme_void() +
-  labs(fill='Engine Type') +
+  labs(fill='Engine Type',title="Percentage of each Engine Type") +
   geom_text(aes(y = ypos, label=paste0(prop, "%")))
 
 # graph 2
@@ -58,38 +58,35 @@ data <- data.frame(xtabs( ~ cyl_F, data=cardata))
 ggplot(data, aes(x=cyl_F,y=Freq,fill="")) +
   geom_bar(stat="identity") +
   theme(legend.position="none") +
-  labs(x="Number of Cylinders",y="Amount of Cars")
+  labs(x="Number of Cylinders",y="Amount of Cars",title="Number of Cylinders in each Car Engine")
 
 # graph 3
 ggplot(cardata, aes(x = carb)) +
   geom_dotplot(dotsize = 1) +
-  labs(y="Frequency (%)",x="Number of Carburetors in Engine")
+  labs(y="Frequency (%)",x="Number of Carburetors in Engine",title="Total Number of Carburetors in each Car")
 
 # graph 4
-ggplot(cardata, aes(y=mpg)) +
-  geom_boxplot() +
-  labs(y="MPG")
+ggplot(cardata, aes(x=mpg)) +
+  geom_histogram() +
+  labs(x="MPG",title="Car Engine MPG")
 
 # 5
 # graph 1
 ggplot(cardata, aes(x=hp,y=qsec,color=gear)) +
   geom_point() +
-  labs(x="Horse Power", y="1/4 Mile Time")
+  labs(x="Horsepower", y="1/4 Mile Time",title="Horsepower and 1/4 Mile Time")
 
 # graph 2
 ggplot(cardata, aes(x=hp,y=qsec,color=vs_F)) +
-  geom_point() +
-  labs(x="Horse Power", y="1/4 Mile Time", color="Engine Shape")
-
+  geom_boxplot() +
+  labs(x="Horsepower", y="1/4 Mile Time", color="Engine Shape",title="Horsepower and 1/4 Mile Time")
 
 # graph 3
 ggplot(cardata, aes(x=hp,y=mpg,size=wt)) +
   geom_point() +
-  labs(x="Horsepower", y="MPG", size="Weight (1000lbs)")
-
+  labs(x="Horsepower", y="MPG", size="Weight (1000lbs)",title="Horsepower and MPG")
 
 # graph 4
 ggplot(cardata, aes(x=hp,y=mpg,color=am_F)) +
-  geom_point() +
-  labs(x="Horsepower",y="MPG",color="Transmission")
-
+  geom_boxplot() +
+  labs(x="Horsepower",y="MPG",color="Transmission",title="Horsepower and MPG")
